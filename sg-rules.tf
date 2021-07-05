@@ -103,3 +103,37 @@ resource "aws_security_group_rule" "redis-allow-amqp" {
   security_group_id = aws_security_group.redis-sg.id
   source_security_group_id  = aws_security_group.amqp-sg.id
 }
+
+# Allow SSH From Anywhere
+
+resource "aws_security_group_rule" "ssh-allow" {
+  type              = "ingress"
+  to_port           = 22
+  protocol          = "tcp"
+  from_port         = 22
+  security_group_id = aws_security_group.bastion-sg.id
+  cidr_blocks      = ["0.0.0.0/0"]
+  ipv6_cidr_blocks = ["::/0"]
+}
+
+# Allow HTTP and HTTPS from Anywhere
+
+resource "aws_security_group_rule" "https-allow" {
+  type              = "ingress"
+  to_port           = 443
+  protocol          = "tcp"
+  from_port         = 443
+  security_group_id = aws_security_group.alb-sg.id
+  cidr_blocks      = ["0.0.0.0/0"]
+  ipv6_cidr_blocks = ["::/0"]
+}
+
+resource "aws_security_group_rule" "http-allow" {
+  type              = "ingress"
+  to_port           = 80
+  protocol          = "tcp"
+  from_port         = 80
+  security_group_id = aws_security_group.alb-sg.id
+  cidr_blocks      = ["0.0.0.0/0"]
+  ipv6_cidr_blocks = ["::/0"]
+}

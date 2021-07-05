@@ -5,24 +5,6 @@ resource "aws_security_group" "alb-sg" {
   description = "Allow TLS inbound traffic"
   vpc_id      = var.Vpc_ID
 
-  ingress {
-    description      = "HTTPS Allow from Anywhere Rule for Load Balancer"
-    from_port        = 443
-    to_port          = 443
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  ingress {
-    description      = "HTTP Allow from Anywhere Rule For Load Balancer"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
   egress {
     from_port        = 0
     to_port          = 0
@@ -40,15 +22,6 @@ resource "aws_security_group" "bastion-sg" {
   name        = "${var.ProjectName}-${var.Environment}-SG-Bastion"
   description = "Allow TLS inbound traffic"
   vpc_id      = var.Vpc_ID
-
-  ingress {
-    description      = "Allow SSH from Anywhere"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
 
   egress {
     from_port        = 0
@@ -167,6 +140,3 @@ resource "aws_security_group" "redis-sg" {
     Name = ""
   }
 }
-
-# sportloto-production-main-SG-EC2
-
