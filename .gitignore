@@ -2,6 +2,5 @@
 
 terraform.tfstate
 terraform.tfstate.backup
-Access Keys.txt
 .terraform.lock.hcl
 .terraform/*

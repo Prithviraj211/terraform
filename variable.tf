@@ -1,6 +1,6 @@
 # Terraform Variables
 
-variable "ProjectName" {}
+variable "project_name" {}
 variable "aws_region" {}
-variable "Environment" {}
-variable "Vpc_ID" {}
+variable "environment" {}
+variable "target_vpc_id" {}

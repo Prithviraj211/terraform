@@ -1,6 +1,6 @@
 # Terraform Variables Default
 
 aws_region = "us-east-1"
-ProjectName = "Legion"
-Environment = "production"  # Environment For example, (staging,production)
-Vpc_ID =  "vpc-5c9b1626"
+project_name = "Legion"
+environment = "production"  # Environment For example, (staging,production)
+target_vpc_id =  "vpc-5c9b1626"
